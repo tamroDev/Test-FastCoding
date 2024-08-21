@@ -1,0 +1,239 @@
+$primary-color: #2aacc8;
+$bg-color: #81e4ed;
+$bg-middle: #e8ebf1;
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == sp {
+    @media screen and (max-width: 530px) {
+      @content;
+    }
+  } @else if $breakpoint == table {
+    @media screen and (max-width: 830px) {
+      @content;
+    }
+  }
+}
+
+#article {
+  width: 100%;
+  height: auto;
+  padding-top: 120px;
+
+  .slide {
+    width: 100%;
+    padding: 23px 0;
+    background: $bg-color;
+
+    .wrapper {
+      max-width: 1000px;
+      height: 100%;
+      width: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+
+      .sildeBg {
+        position: relative;
+        z-index: 998;
+        background: #000;
+
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+
+        .textSlide {
+          font-family: "Lato";
+          width: 30%;
+          height: 50%;
+          font-size: 50px;
+          line-height: 55px;
+          color: #ffffff;
+          font-weight: 700;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: translate(20%, 45%);
+          font-weight: 700;
+        }
+      }
+
+      .listDot {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        .dot {
+          height: 14px;
+          width: 14px;
+          background-color: #626262;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+
+        .focusDot {
+          background: #fff;
+        }
+      }
+    }
+  }
+
+  .middleSection {
+    background: $bg-middle;
+    height: 300px;
+    width: 100%;
+
+    .wrapper {
+      max-width: 1000px;
+      height: 100%;
+      margin: auto;
+
+      .middleItems {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        height: 100%;
+
+        .item {
+          display: flex;
+          justify-content: start;
+          align-items: start;
+          flex-direction: column;
+          gap: 20px;
+          height: 100%;
+          width: 100%;
+          padding: 25% 0;
+
+          .title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            img {
+              max-width: 36px;
+            }
+
+            h1 {
+              font-weight: bold;
+              text-transform: uppercase;
+            }
+          }
+
+          .contentItem {
+            font-size: 13px;
+            color: #363636;
+          }
+
+          .readMore {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 15px;
+
+            a {
+              color: $primary-color;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @include respond(table) {
+    padding-top: 60px;
+
+    .slide {
+      padding: 13px 0;
+      .wrapper {
+        width: 80%;
+        gap: 10px;
+
+        .sildeBg {
+          .textSlide {
+            font-size: 30px;
+            line-height: 35px;
+            width: 30%;
+            min-height: 140px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            text-overflow: ellipsis;
+            transform: translate(20%, 25%);
+            overflow: hidden;
+          }
+        }
+      }
+    }
+
+    .middleSection {
+      height: max-content;
+      .wrapper {
+        width: 80%;
+
+        .middleItems {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+
+          .item {
+            padding: 5% 0;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
+  }
+
+  @include respond(sp) {
+    .slide {
+      .wrapper {
+        width: 80%;
+        gap: 10px;
+
+        .sildeBg {
+          .textSlide {
+            font-size: 20px;
+            line-height: 20px;
+            width: 30%;
+            min-height: 80px;
+          }
+        }
+      }
+    }
+
+    .middleSection {
+      height: max-content;
+      .wrapper {
+        width: 80%;
+
+        .middleItems {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+
+          .item {
+            padding: 5% 0;
+            justify-content: space-between;
+
+            .title {
+              font-size: 12px;
+              font-weight: 600;
+
+              h1 {
+                text-transform: none;
+              }
+            }
+
+            .contentItem {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
